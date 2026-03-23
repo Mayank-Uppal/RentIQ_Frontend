@@ -56,7 +56,7 @@ function HomeForm(){
         <>
 
             <HomeInput handlenavigate={handlenavigate}
-             onsubmit={onsubmit} textone={path==="signup"?"Already have an account?":"Don't have an account"} texttwo={path==="signup"?"Login":"Signup"} legend={path==="signup"?"Sign Up":"Login"} onchange={onchange} inputs={path==="signup"?signupFields:loginFields} role={path==="signup"?true:false} buttonList={buttonList} />
+             onsubmit={onsubmit} textone={path==="signup"?"Already have an account?":"Don't have an account"} texttwo={path==="signup"?"Login":"Signup"} legend={path==="signup"?"Sign Up":"Login"}  inputs={path==="signup"?signupFields:loginFields} role={path==="signup"?true:false} buttonList={buttonList} />
             
         </>
     )

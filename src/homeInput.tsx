@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form"
 import type { SubmitHandler } from "react-hook-form"
 import type { RegisterOptions } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
 
 export type Inputs = {
     [key:string]:string
@@ -40,7 +39,6 @@ function HomeInput({inputs,buttonList,onsubmit,role,legend,handlenavigate,texton
         formState: { errors },
         getValues
     } = useForm<Inputs>()
-    const navigate=useNavigate();
     return (
         <>
         <div className="dark bg-neutral-primary min-h-screen flex items-center justify-center py-8 px-4">
@@ -66,7 +64,7 @@ function HomeInput({inputs,buttonList,onsubmit,role,legend,handlenavigate,texton
                 )}
                 {errors.role && <span className="text-sm text-red-700">Role is required</span>}
                 {buttonList.map((btn,index)=>(
-                    <button onClick={()=>btn.handleClick?.(getValues())} key={index} type={btn.type} className={btn.css}>{btn.text}</button>
+                    <button onClick={()=>btn.handleClick} key={index} type={btn.type} className={btn.css}>{btn.text}</button>
                 ))}
                 <button onClick={handlenavigate} type="button" className="text-body cursor-pointer text-md">{textone} <span className="text-indigo-500 text-md">{texttwo}</span></button>
                 </fieldset> 

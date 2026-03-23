@@ -20,7 +20,7 @@ function HomeTenant(){
     }
     useEffect(()=>{
         fetchTenant()
-    },[])
+    },[token])
     return(
         <>
 

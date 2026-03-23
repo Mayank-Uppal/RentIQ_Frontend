@@ -78,7 +78,7 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
         ):null}
 
         {alert?(
-            <div className="fixed top-0 right-0 z-index:9999 w-full"> 
+            <div className="fixed top-0 right-0 z-[9999] w-full"> 
             <Alert message={alertMsg} css={alertCss}/>
             </div>
         ):null}

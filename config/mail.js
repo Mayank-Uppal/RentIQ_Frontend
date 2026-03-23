@@ -39,13 +39,19 @@ const sendMail = async (email, token) => {
 
 <p>Best regards,</p>
 <p>Team RentIQ</p>`
-        const mail = await resend.emails.send({
+        const {data,error }= await resend.emails.send({
             from: "RentIQ <onboarding@resend.dev>",
             to: email,
             subject: "Invite to join Rental Property",
             html: message
         })
+        if (error) {
+            console.error("❌ Resend error:", error);
+            throw error;
+        }
         console.log(`mail sent to ${email}`);
+        console.log("📧 Email ID:", data?.id); // Important: Log the email ID
+        return data;
     } catch (error) {
         console.log(error);
     }

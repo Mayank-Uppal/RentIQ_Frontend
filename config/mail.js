@@ -1,18 +1,19 @@
+import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { Resend } from 'resend';
+/* import { Resend } from 'resend';
 
-const resend = new Resend(process.env.resend_api_key);
+const resend = new Resend(process.env.resend_api_key); */
 
 /* resend.emails.send({
   from: 'onboarding@resend.dev',
   to: 'myank07official@gmail.com',
   subject: 'Hello World',
   html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
-}); */
+});  */
 
-/* const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",       
     port: 587,                      
     secure:false,
@@ -21,7 +22,7 @@ const resend = new Resend(process.env.resend_api_key);
         user: process.env.gmail_user,
         pass: process.env.gmail_pass
     }
-}) */
+})
 
 const sendMail = async (email, token) => {
     try {

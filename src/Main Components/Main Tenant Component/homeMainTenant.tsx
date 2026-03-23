@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import type { propertyProp } from '../Main Property Component/propertyProp';
 import { useLocation, useNavigate } from "react-router-dom";
 import HomeNavbar from "../Main Home Component/navbar/homeNavbar";
 import MainCopy from "../Main Home Component/Main /mainCopy";
@@ -13,7 +12,7 @@ export const tenantButtonList = [
 ]
 
 function HomeMainTenant() {
-    const [tenantData, setTenantData] = useState<propertyProp[]>([]);
+    const [tenantData, setTenantData] = useState<any[]>([]);
     const navigate = useNavigate();
     const location = useLocation();
     const tenantToken = location.state?.tenantToken;
@@ -23,7 +22,7 @@ function HomeMainTenant() {
     const fetchData = async () => {
         const response = await axios.get("https://rentiq-project.onrender.com/Tenant", { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
         console.log("response ", response.data)
-        const compiledData = response.data.message.map((prop) => ({
+        const compiledData = response.data.message.map((prop:any) => ({
             ...prop,
             location: prop.address + " " + prop.city + " " + prop.pincode,
             propertyName: prop.propertyName,
@@ -37,11 +36,6 @@ function HomeMainTenant() {
     }, [])
 
     console.log("Tenant Tenant Token", tenantToken);
-    const mainbuttonList = [{
-        css: "text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xs text-sm px-6 py-3 focus:outline-none",
-        text: "Log Out",
-        handleClick: () => { localStorage.removeItem("token"); navigate("/auth/login") }
-    }]
 
     const button=[
         {

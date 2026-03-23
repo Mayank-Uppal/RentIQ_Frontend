@@ -1,6 +1,5 @@
 import {Element} from 'react-scroll'
 import Feature from "../Features/feature";
-import MainHome from "./mainHome";
 import Reviews from "../Reviews/reviews";
 import Footer from '../Footer/footer';
 import Contact from "../Contact/contact";
@@ -33,11 +32,11 @@ function MainCopy({titleOne,titleTwo,HeadingOne,HeadingTwo,subHeading,buttonList
 
     return (
         <>
-        <HomeNavbar ishome={true} isbtn={true} buttonArr={token?btnOne:null} />
+        <HomeNavbar ishome={true} isbtn={true} buttonArr={token?btnOne:undefined} />
 
 
             <section className="dark bg-neutral-primary flex flex-col md:pt-32">
-                <div className="py-8 px-4 md:mx-12 md:w-1/2 max-w-screen-xl text-left lg:py-34 z-10 relative">
+                <div className="py-8 px-4 md:mx-12 md:w-1/2 text-left lg:py-34 z-10 relative">
                     <div className=" btn btn-outline text-white mb-10 border-bg-indigo-500 " role="alert">
                         <span className=" text-white font-bold bg-indigo-500 py-0.5 px-2 rounded-xs">{titleOne}</span>
                         <div className="ms-2 text-sm font-bold text-white">

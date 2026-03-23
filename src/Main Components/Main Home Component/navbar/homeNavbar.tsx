@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -16,7 +16,7 @@ function HomeNavbar({ishome,isbtn,buttonArr}:prop) {
     console.log(ishome)
     return (
         <>
-            <nav className="dark bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
+            <nav className="dark bg-neutral-primary fixed w-full z-20 top-0 border-b border-default">
                 <div className="max-w-full flex flex-wrap items-center justify-between mx-8 p-6">
                     <RouterLink to="/home" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="https://flowbite.com/docs/images/logo.svg" className="h-7" alt="Flowbite Logo" />

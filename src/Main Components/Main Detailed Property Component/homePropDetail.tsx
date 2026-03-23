@@ -5,12 +5,13 @@ import {useLocation } from "react-router-dom";
 import { createContext } from "react";
 import HomeNavbar from "../Main Home Component/navbar/homeNavbar";
 export const dataContext=createContext(null);
+import {cardProps} from "../Main Property Component/homePropCard";
 
 export const tableHeading=["Tenant","Age","Gender","Occupation","Rent Month","Joining Month","Monthly Rent","Total Amount Paid","Rent Status","Edit","History"]
 
 function HomePropDetail() {
-    const [rentstatus,setrentstatus]=useState<string>("Pending");
-    const [eachProperty, setEachProperty] = useState<cardProp[]>([]);
+    const [rentstatus]=useState<string>("Pending");
+    const [eachProperty, setEachProperty] = useState<cardProps[]>([]);
     const [tenantDetail,setTenantDetails]=useState([]);
     const location = useLocation();
     const propertyId = location.pathname.split('/')[2];
@@ -27,7 +28,7 @@ function HomePropDetail() {
             location: prop.address + " " + prop.city + " " + prop.pincode
         }))
         const rent=response.data.message.rent.toLocaleString('en-IN');
-        const compiledTableData = tenant.map((prop,index) => {
+        const compiledTableData = tenant.map((prop) => {
 
             const date = new Date(prop.joinedAt);
             const presentDate=new Date(Date.now());

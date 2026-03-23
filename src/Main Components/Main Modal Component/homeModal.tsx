@@ -47,7 +47,7 @@ function HomeModal({ showModal, handlesubmit, propertyId }: modalProps) {
     }
     return (
         <>
-            <div id="authentication-modal" tabindex="-1" aria-hidden="true" className="dark overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div id="authentication-modal" tabIndex="-1" aria-hidden="true" className="dark overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div className="relative p-4 w-full max-w-md max-h-full">
                     <div className="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
                         <div className="flex items-center justify-between border-b border-default pb-4 md:pb-5">
@@ -61,7 +61,7 @@ function HomeModal({ showModal, handlesubmit, propertyId }: modalProps) {
                         </div>
                         <form onSubmit={onsubmit} action="#" className="pt-4 md:pt-6">
                             <div className="mb-4">
-                                <label for="email" className="block mb-2.5 text-sm font-medium text-heading">Add email</label>
+                                <label htmlFor"email" className="block mb-2.5 text-sm font-medium text-heading">Add email</label>
                                 <input type="email" id="email" className="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-xs focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="example@company.com"  {...register("email", {
                                     required: "Email is Required", pattern: { value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message: "Enter valid email address" }
                                 })} />

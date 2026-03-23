@@ -1,7 +1,6 @@
 import HomeNavbar from "../Main Home Component/navbar/homeNavbar";
 import HomePropCard from "./homePropCard";
 import axios from "axios";
-import type {propertyProp} from './homePropCard';
 import { propbuttonList } from "./propertyProp";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,20 +10,21 @@ import Alert from "./Alert";
 
 
 function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
-    const [istoken,setistoken]=useState<string | null>(localStorage.getItem("token"));
-    const [propertyData,setPropertyData]=useState<propertyProp[]>([]);
+    const [istoken]=useState<string | null>(localStorage.getItem("token"));
+    const [propertyData,setPropertyData]=useState<any[]>([]);
     const [showModal,setshowmodal]=useState<boolean>(false);
     const [propertyId,setpropertyId]=useState<string>("");
     const [alert,setalert]=useState<boolean>(false);
     const [alertMsg,setAlertMsg]=useState<string>("Invitation Sent Successfully");
     const [alertCss,setAlertCss]=useState<string>("alert alert-success");
+    const navigate=useNavigate();
 
 
 
     const fetchData=async()=>{
         const res=await axios.get('https://rentiq-project.onrender.com/property/details',{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}});
         console.log(res.data.message);
-        const compiledData=res.data.message.map((prop)=>({
+        const compiledData=res.data.message.map((prop:any)=>({
             ...prop,
             location:prop.address+ " " + prop.city + " " + prop.pincode,
         }))
@@ -35,8 +35,18 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
         fetchData()
     },[istoken])
 
-    button[0].handleClick=()=>navigate('/user/add/property');
-    button[1].handleClick=()=>handleLogout();
+    const button = [
+        {
+            text:"Add Property",
+            css:"text-white border-indigo-500 btn btn-outline hover:bg-black bg-indigo-500 px-12 py-6",
+            handleClick:()=>navigate('/user/add/property')
+        },
+        {
+            text:"Log Out",
+            css:"text-white border-indigo-500 btn btn-outline hover:bg-indigo-500 bg-black px-12 py-6",
+            handleClick:()=>handleLogout()
+        }
+    ]
 
     const handlesubmit=(value:boolean)=>{
         setshowmodal(false);
@@ -60,7 +70,6 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
         }
     }
 
-    const navigate=useNavigate();
     return(
         <>
         {showModal?(
@@ -70,7 +79,7 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
         ):null}
 
         {alert?(
-            <div className="fixed top-0 right-0 z-[9999] w-full"> {/* Very high z-index */}
+            <div className="fixed top-0 right-0 z-index:9999 w-full"> 
             <Alert message={alertMsg} css={alertCss}/>
             </div>
         ):null}
@@ -101,9 +110,7 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
                         }
                     }
                     return(
-                        <>
                     <HomePropCard key={index} image='../images.jpeg'  property={[prop]} buttonList={buttonList} />
-                    </>
                     )
             })}
             </div>

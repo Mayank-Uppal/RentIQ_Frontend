@@ -3,7 +3,6 @@ import HomeNavbar from "../../Main Components/Main Home Component/navbar/homeNav
 import HomeHeading from "./homeHeading";
 import HomeForm from "./homeForm";
 
-
 function HomeAuth(){
     const location=useLocation();
     const route=location.pathname.split('/')[3];

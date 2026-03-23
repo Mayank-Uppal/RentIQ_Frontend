@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RentHistory from "./homeRentHistory";
-import axios from "axios";
+import React from "react";
 
 interface tableProp{
     tableHeading:string[],
@@ -9,7 +9,7 @@ interface tableProp{
     rentstatus?:string
 }
 
-function HomeTable({tableHeading,tableData,handleClick,rentstatus}:tableProp) {
+function HomeTable({tableHeading,tableData,handleClick}:tableProp) {
     const [rentHistory,setrentHistory]=useState<boolean>(false);
 
     return (
@@ -27,7 +27,7 @@ function HomeTable({tableHeading,tableData,handleClick,rentstatus}:tableProp) {
                     </thead>
                     <tbody>
                         {tableData.map((data,index)=>(
-                            <>
+                        <React.Fragment key={index}>
                         <tr  key={index} className="bg-neutral-primary-soft border-b border-default ">
                                 <th scope="row" className="text-center flex items-center px-6 py-4 text-heading whitespace-nowrap">
                                 
@@ -63,13 +63,12 @@ function HomeTable({tableHeading,tableData,handleClick,rentstatus}:tableProp) {
                                 </div>
                             </td>
                             <td className="text-center px-6 py-4">
-                                <button onClick={()=>handleClick(data._id,data.currentMonth)} type="button" className=" text-white border-indigo-500 btn btn-outline bg-black hover:bg-indigo-500 py-3 ">Change</button>
+                                <button onClick={()=>handleClick?.(data._id,data.currentMonth)} type="button" className=" text-white border-indigo-500 btn btn-outline bg-black hover:bg-indigo-500 py-3 ">Change</button>
                             </td>
                             <td className="text-center px-6 py-4">
                                 <button onClick={()=>setrentHistory(!rentHistory)} type="button" className=" text-white border-indigo-500 btn btn-outline hover:bg-black bg-indigo-500 py-3 ">View History</button>
                             </td>
                         </tr>
-
                         {rentHistory && (
                             <tr>
                                 <td colSpan={11} className="p-0">
@@ -77,7 +76,7 @@ function HomeTable({tableHeading,tableData,handleClick,rentstatus}:tableProp) {
                                 </td>
                             </tr>
                         )}
-                        </>
+                        </React.Fragment>
                         ))}
                     </tbody>
                 </table>

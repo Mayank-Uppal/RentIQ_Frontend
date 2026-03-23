@@ -3,8 +3,10 @@ import { dataContext } from "./homePropDetail";
 import React from "react";
 
 const tableHeading=["Month","Rent","Rent Status"]
+
 function HomeRentHistory() {
-    const {tenantDetail}=useContext(dataContext);
+    const tenantDetail=useContext(dataContext);
+    
     return (
         <>
             <div className="my-4 mx-4 relative overflow-x-auto bg-neutral-primary shadow-xs rounded-base border border-default">
@@ -19,9 +21,9 @@ function HomeRentHistory() {
                         </tr>
                     </thead>
                     <tbody>
-                        {tenantDetail.map((data,index)=>(
+                        {tenantDetail.map((data:any,index:number)=>(
                             <React.Fragment key={index}>
-                                {data.rentDetails.map((rentDetails,index)=>(
+                                {data.rentDetails.map((rentDetails:any,index:number)=>(
                                  <tr  key={index} className="bg-neutral-primary-soft border-b border-default ">
                             <td className="text-center px-6 py-4">
                                 {rentDetails.month}

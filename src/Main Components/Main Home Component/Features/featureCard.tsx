@@ -1,7 +1,7 @@
 interface card {
     cardHeading: string,
     cardDescription: string,
-    icon: SVGAElement
+    icon: React.ReactNode  
 }
 
 function FeatureCard({ cardHeading, cardDescription, icon }: card) {

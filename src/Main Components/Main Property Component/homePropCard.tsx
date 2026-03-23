@@ -4,7 +4,7 @@ interface propertyProp{
     location:string,
     rent:number
 }
-interface CardProps{
+export interface CardProps{
     property:propertyProp[],
     buttonList?:{
         btnTitle:string,

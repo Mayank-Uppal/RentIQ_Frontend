@@ -1,8 +1,7 @@
 import Table from "./homeTable";
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import {useLocation } from "react-router-dom";
-import RentHistory from "./homeRentHistory";
 import { createContext } from "react";
 import HomeNavbar from "../Main Home Component/navbar/homeNavbar";
 export const dataContext=createContext(null);
@@ -28,7 +27,6 @@ function HomePropDetail() {
             location: prop.address + " " + prop.city + " " + prop.pincode
         }))
         const rent=response.data.message.rent.toLocaleString('en-IN');
-        console.log(rentstatus)
         const compiledTableData = tenant.map((prop,index) => {
 
             const date = new Date(prop.joinedAt);

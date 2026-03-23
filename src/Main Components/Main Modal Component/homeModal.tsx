@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import axios from 'axios';
-import { Alert } from "flowbite-react";
 
 export type Inputs = {
     [key: string]: string

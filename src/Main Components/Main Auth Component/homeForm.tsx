@@ -28,9 +28,6 @@ function HomeForm(){
             console.log("path",path)
             console.log("role",role)
 
-            /* if((response.status===200 || response.status === 201) && tenantToken!==""){
-                navigate('/user/profile',{state:{"tenantToken":tenantToken,role:response.data.role}})
-            } */
             if(path==="signup" && tenantToken===""){
                 navigate('/user/profile',{state:{role:response.data.role}});
             }
@@ -44,8 +41,6 @@ function HomeForm(){
             else if(path==="login" && tenantToken!==""){
                 navigate('/tenant',{state:{role:response.data.role,tenantToken:tenantToken}})
             }
-            const token1 = localStorage.getItem("token")
-            const decoded = JSON.parse(atob(token1!.split('.')[1]))
         } catch (error) {
             console.log(error);
         }

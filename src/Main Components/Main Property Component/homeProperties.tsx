@@ -4,15 +4,13 @@ import axios from "axios";
 import type {propertyProp} from './homePropCard';
 import { propbuttonList } from "./propertyProp";
 import { useEffect, useState } from "react";
-import type { SubmitHandler } from "react-hook-form";
-import type { Inputs } from "../../homeInput";
 import { useNavigate } from "react-router-dom";
 import {button} from './propertyProp';
 import HomeModal from "../Main Modal Component/homeModal";
 import Alert from "./Alert";
 
 
-function HomeProperties({handleLogout}:{handleLogout:()=>void}){
+function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
     const [istoken,setistoken]=useState<string | null>(localStorage.getItem("token"));
     const [propertyData,setPropertyData]=useState<propertyProp[]>([]);
     const [showModal,setshowmodal]=useState<boolean>(false);

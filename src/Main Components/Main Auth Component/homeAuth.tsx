@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import HomeNavbar from "../../Main Components/Main Home Component/navbar/homeNavbar";
-import { useEffect, useState } from "react";
 import HomeHeading from "./homeHeading";
 import HomeForm from "./homeForm";
 
@@ -8,7 +7,6 @@ import HomeForm from "./homeForm";
 function HomeAuth(){
     const location=useLocation();
     const route=location.pathname.split('/')[3];
-    const [ishome,setishome]=useState<boolean>(true);
     return(
         <>
 

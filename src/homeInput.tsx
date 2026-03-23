@@ -27,9 +27,9 @@ interface InputRequiredProps{
     role?:boolean,
     legend:string,
     handlenavigate?:()=>void,
-    textone:string,
+    textone?:string,
     handleClick?:()=>void,
-    texttwo:string
+    texttwo?:string
 }
 
 function HomeInput({inputs,buttonList,onsubmit,role,legend,handlenavigate,textone,texttwo}:InputRequiredProps) {

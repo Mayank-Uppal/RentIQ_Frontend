@@ -21,7 +21,7 @@ function HomeRentHistory() {
                         </tr>
                     </thead>
                     <tbody>
-                        {tenantDetail.map((data:any,index:number)=>(
+                        {tenantDetail || [].map((data:any,index:number)=>(
                             <React.Fragment key={index}>
                                 {data.rentDetails.map((rentDetails:any,index:number)=>(
                                  <tr  key={index} className="bg-neutral-primary-soft border-b border-default ">

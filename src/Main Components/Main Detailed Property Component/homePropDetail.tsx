@@ -7,11 +7,17 @@ import HomeNavbar from "../Main Home Component/navbar/homeNavbar";
 export const dataContext=createContext(null);
 
 export const tableHeading=["Tenant","Age","Gender","Occupation","Rent Month","Joining Month","Monthly Rent","Total Amount Paid","Rent Status","Edit","History"]
+interface DataContextType {
+    tenantDetail: any[];
+    eachProperty: any[];
+}
+
 
 function HomePropDetail() {
+    const dataContext = createContext<DataContextType | null>(null);
     const [rentstatus]=useState<string>("Pending");
     const [eachProperty, setEachProperty] = useState<any[]>([]);
-    const [tenantDetail,setTenantDetails]=useState([]);
+    const [tenantDetail,setTenantDetails]=useState<any[]>([]);
     const location = useLocation();
     const propertyId = location.pathname.split('/')[2];
 

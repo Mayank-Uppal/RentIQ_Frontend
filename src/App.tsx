@@ -9,6 +9,7 @@ import HomePropDetail from './Main Components/Main Detailed Property Component/h
 import HomeRentHistory from './Main Components/Main Detailed Property Component/homeRentHistory'
 import HomeMainTenant from './Main Components/Main Tenant Component/homeMainTenant'
 import HomeTenant from './Main Components/Main Tenant Component/homeTenant'
+import { Navigate } from 'react-router-dom'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     <>
     <Router>
       <Routes>
+        <Route path='/' element={<Navigate to="/home" replace />} />
         <Route path='/home' element={<MainHome />}/>
         <Route path='/auth/user/signup' element={<HomeAuth/>}/>
         <Route path='/auth/user/login' element={<HomeAuth/>}/>

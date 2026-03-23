@@ -24,7 +24,7 @@ function HomeProperties({handleLogout}:{handleLogout:()=>void}){
 
 
     const fetchData=async()=>{
-        const res=await axios.get('http://127.0.0.1:3000/property/details',{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}});
+        const res=await axios.get('https://rentiq-project.onrender.com/property/details',{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}});
         console.log(res.data.message);
         const compiledData=res.data.message.map((prop)=>({
             ...prop,
@@ -98,7 +98,7 @@ function HomeProperties({handleLogout}:{handleLogout:()=>void}){
                         handleClick:async ()=>{
                             setpropertyId(prop._id);
                             const tenantId=prop.tenant[0];
-                            await axios.get(`http://127.0.0.1:3000/Tenant/rent/${tenantId}`,{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
+                            await axios.get(`https://rentiq-project.onrender.com/Tenant/rent/${tenantId}`,{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
                             navigate(`/property/${prop._id}/detail`)
                         }
                     }

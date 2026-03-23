@@ -11,7 +11,7 @@ function HomePropInput(){
     const navigate=useNavigate();
     const handleSubmit: SubmitHandler<Inputs> = async (data) => {
         try {
-            const response=await axios.post(`http://127.0.0.1:3000/property/add-details`,data,{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}});
+            const response=await axios.post(`https://rentiq-project.onrender.com/property/add-details`,data,{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}});
             console.log(response.data.message);
             if(response.status===200 || response.status === 201){
                 navigate('/home/property');

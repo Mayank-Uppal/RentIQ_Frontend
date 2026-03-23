@@ -17,7 +17,7 @@ function HomePropDetail() {
     const propertyId = location.pathname.split('/')[2];
 
     const fetchData = async () => {
-        const response = await axios.get(`http://127.0.0.1:3000/property/details/${propertyId}`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
+        const response = await axios.get(`https://rentiq-project.onrender.com/property/details/${propertyId}`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
         const data = [response.data.message];
         const tenant=response.data.message.tenant;
 
@@ -58,7 +58,7 @@ function HomePropDetail() {
     }
     const handleSubmit=async(id:any,month:string)=>{
         try {
-            const response=await axios.patch(`http://127.0.0.1:3000/Tenant/${id}`,{month},{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}});
+            const response=await axios.patch(`https://rentiq-project.onrender.com/Tenant/${id}`,{month},{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}});
             console.log(response);
             fetchData();
         } catch (error) {

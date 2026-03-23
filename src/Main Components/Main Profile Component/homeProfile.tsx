@@ -25,8 +25,8 @@ function HomeProfile(){
         }
 
         const apiUrl = role === "Owner" 
-            ? `http://127.0.0.1:3000/Owner/profile`
-            : `http://127.0.0.1:3000/Tenant/profile?token=${tenantToken}`;
+            ? `https://rentiq-project.onrender.com/Owner/profile`
+            : `https://rentiq-project.onrender.com/Tenant/profile?token=${tenantToken}`;
         
         const response = await axios.post(apiUrl, data, {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }

@@ -41,7 +41,7 @@ function HomeModal({ showModal, handlesubmit, propertyId }: modalProps) {
         handlesubmit(true);
 
         try {
-            await axios.post(`http://127.0.0.1:3000/property/${propertyId}/invite`, emails, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+            await axios.post(`https://rentiq-project.onrender.com/property/${propertyId}/invite`, emails, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
         } catch (error) {
             console.log(error);
         }

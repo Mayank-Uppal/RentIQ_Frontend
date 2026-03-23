@@ -19,7 +19,7 @@ function HomeForm(){
     }
     const onsubmit: SubmitHandler<Inputs> = async (data) => {
         try {
-            const response=await axios.post(`http://127.0.0.1:3000/auth/${path}`,data);
+            const response=await axios.post(`https://rentiq-project.onrender.com/auth/${path}`,data);
             const token=response.data.token;
             const role=response.data.role;
             localStorage.setItem("token",token);

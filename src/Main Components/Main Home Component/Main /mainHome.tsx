@@ -25,7 +25,7 @@ function MainHome(){
     const [properties,setproperties]=useState<boolean>(false);
 
     const fetchData=async()=>{
-        const res=await axios.get('http://127.0.0.1:3000/property/details',{headers:{Authorization:`Bearer ${token1}`}});
+        const res=await axios.get('https://rentiq-project.onrender.com/property/details',{headers:{Authorization:`Bearer ${token1}`}});
         if(res.data.message.length > 0){
             setproperties(true)
         }

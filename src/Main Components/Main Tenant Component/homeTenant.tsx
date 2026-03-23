@@ -9,7 +9,7 @@ function HomeTenant(){
     console.log(token);
     const fetchTenant=async()=>{
         try {
-            const response=await axios.get(`http://127.0.0.1:3000/Tenant/invite/${token}`);
+            const response=await axios.get(`https://rentiq-project.onrender.com/Tenant/invite/${token}`);
             const message=response.data.message;
             if(message==='signup')navigate('/auth/user/signup',{state:{"tenantToken":token}});
             if(message==='login')navigate('/auth/user/login',{state:{"tenantToken":token}});

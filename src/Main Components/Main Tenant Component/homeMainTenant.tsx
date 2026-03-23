@@ -21,7 +21,7 @@ function HomeMainTenant() {
     console.log(location.state)
 
     const fetchData = async () => {
-        const response = await axios.get("http://127.0.0.1:3000/Tenant", { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
+        const response = await axios.get("https://rentiq-project.onrender.com/Tenant", { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
         console.log("response ", response.data)
         const compiledData = response.data.message.map((prop) => ({
             ...prop,

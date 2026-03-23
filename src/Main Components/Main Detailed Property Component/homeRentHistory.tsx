@@ -6,7 +6,7 @@ const tableHeading=["Month","Rent","Rent Status"]
 
 function HomeRentHistory() {
     const tenantDetail=useContext(dataContext);
-    
+    if(!tenantDetail)return null;
     return (
         <>
             <div className="my-4 mx-4 relative overflow-x-auto bg-neutral-primary shadow-xs rounded-base border border-default">

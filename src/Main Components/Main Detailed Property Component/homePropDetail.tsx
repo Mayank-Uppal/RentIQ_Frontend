@@ -5,13 +5,12 @@ import {useLocation } from "react-router-dom";
 import { createContext } from "react";
 import HomeNavbar from "../Main Home Component/navbar/homeNavbar";
 export const dataContext=createContext(null);
-import {cardProps} from "../Main Property Component/homePropCard";
 
 export const tableHeading=["Tenant","Age","Gender","Occupation","Rent Month","Joining Month","Monthly Rent","Total Amount Paid","Rent Status","Edit","History"]
 
 function HomePropDetail() {
     const [rentstatus]=useState<string>("Pending");
-    const [eachProperty, setEachProperty] = useState<cardProps[]>([]);
+    const [eachProperty, setEachProperty] = useState<any[]>([]);
     const [tenantDetail,setTenantDetails]=useState([]);
     const location = useLocation();
     const propertyId = location.pathname.split('/')[2];
@@ -28,7 +27,7 @@ function HomePropDetail() {
             location: prop.address + " " + prop.city + " " + prop.pincode
         }))
         const rent=response.data.message.rent.toLocaleString('en-IN');
-        const compiledTableData = tenant.map((prop) => {
+        const compiledTableData = tenant.map((prop:any) => {
 
             const date = new Date(prop.joinedAt);
             const presentDate=new Date(Date.now());
@@ -46,7 +45,7 @@ function HomePropDetail() {
             joinedAt:`${month}-${year}`,
             rent:rent,
             currentMonth:`${pmonth}-${pyear}`,
-            rentstatus: prop.rentDetails.map((data) => {
+            rentstatus: prop.rentDetails.map((data:any) => {
     if(data.month === `${pmonth}-${pyear}`) return data.rentstatus
 }) || "Pending",
             totalAmountPaid:((presentDate.getFullYear()-date.getFullYear())*12+(presentDate.getMonth()-date.getMonth()))*rent

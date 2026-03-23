@@ -37,7 +37,6 @@ function HomeInput({inputs,buttonList,onsubmit,role,legend,handlenavigate,texton
         register,
         handleSubmit,
         formState: { errors },
-        getValues
     } = useForm<Inputs>()
     return (
         <>

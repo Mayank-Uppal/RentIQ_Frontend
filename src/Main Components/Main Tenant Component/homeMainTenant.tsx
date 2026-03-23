@@ -7,7 +7,10 @@ import HomePropCard from "../Main Property Component/homePropCard";
 
 export const tenantButtonList = [
     {
-        btnTitle: "Read More"
+        btnTitle: "Read More",
+        handleClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+            e.preventDefault();
+        }
     }
 ]
 
@@ -48,6 +51,17 @@ function HomeMainTenant() {
         }
     ]
 
+    const mainCopyButtons = [
+        {
+            css: "text-white border-indigo-500 btn btn-outline hover:bg-indigo-500 bg-black px-12 py-6",
+            text: "Log Out",
+            handleClick: () => {
+                localStorage.removeItem("token");
+                navigate('/home');
+            }
+        }
+    ];
+
     return (
         tenantToken || tenantData?(
         <div className="dark bg-neutral-primary min-h-screen">
@@ -62,7 +76,7 @@ function HomeMainTenant() {
         </div>
         ): (
         <div className="dark bg-neutral-primary min-h-screen">
-            <MainCopy titleOne="RentIQ" titleTwo="Welcome as Tenant !" HeadingOne="Welcome to RentIQ" HeadingTwo="Tenant Access" subHeading="You are currently logged in as a tenant. This section is designed for landlords and property managers to add and manage their rental properties. Access to property details and lease information will be available once your landlord sends you an invite through email. If you believe you should have landlord access, please use the logout button below to sign in with a different account." buttonList={tenantButtonList} />
+            <MainCopy titleOne="RentIQ" titleTwo="Welcome as Tenant !" HeadingOne="Welcome to RentIQ" HeadingTwo="Tenant Access" subHeading="You are currently logged in as a tenant. This section is designed for landlords and property managers to add and manage their rental properties. Access to property details and lease information will be available once your landlord sends you an invite through email. If you believe you should have landlord access, please use the logout button below to sign in with a different account." buttonList={mainCopyButtons} />
         </div>
     )
 )}

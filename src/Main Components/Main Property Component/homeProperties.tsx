@@ -4,7 +4,6 @@ import axios from "axios";
 import { propbuttonList } from "./propertyProp";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {button} from './propertyProp';
 import HomeModal from "../Main Modal Component/homeModal";
 import Alert from "./Alert";
 
@@ -44,7 +43,7 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
         {
             text:"Log Out",
             css:"text-white border-indigo-500 btn btn-outline hover:bg-indigo-500 bg-black px-12 py-6",
-            handleClick:()=>handleLogout()
+            handleClick:()=>handleLogout?.()
         }
     ]
 
@@ -74,7 +73,7 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
         <>
         {showModal?(
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
-                <HomeModal  propertyId={propertyId} showModal={showModal} handlesubmit={handlesubmit}/>
+                <HomeModal  propertyId={propertyId}  handlesubmit={handlesubmit}/>
             </div>
         ):null}
 
@@ -91,24 +90,30 @@ function HomeProperties({handleLogout}:{handleLogout?:()=>void}){
 
             <div className="grid grid-cols-1 gap-10 md:p-4 md:grid-cols-2 justify-center items-center md:py-44">
                 {propertyData.map((prop,index)=>{
-                    const buttonList=[...propbuttonList];
-                    buttonList[0]={
-                        ...buttonList[0],
-                        handleClick:()=>{
-                            console.log("click")
-                            setpropertyId(prop._id);
-                            setshowmodal(true);
-                        }
-                    }
-                    buttonList[1]={
-                        ...buttonList[1],
-                        handleClick:async ()=>{
-                            setpropertyId(prop._id);
-                            const tenantId=prop.tenant[0];
-                            await axios.get(`https://rentiq-project.onrender.com/Tenant/rent/${tenantId}`,{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
-                            navigate(`/property/${prop._id}/detail`)
-                        }
-                    }
+                    const buttonList = [
+                            {
+                                btnTitle: propbuttonList[0].btnTitle,
+                                handleClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+                                    e.preventDefault();
+                                    console.log("click");
+                                    setpropertyId(prop._id);
+                                    setshowmodal(true);
+                                }
+                            },
+                            {
+                                btnTitle: propbuttonList[1].btnTitle,
+                                handleClick: async (e: React.MouseEvent<HTMLButtonElement>) => {
+                                    e.preventDefault();
+                                    setpropertyId(prop._id);
+                                    const tenantId = prop.tenant[0];
+                                    await axios.get(
+                                        `https://rentiq-project.onrender.com/Tenant/rent/${tenantId}`,
+                                        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+                                    );
+                                    navigate(`/property/${prop._id}/detail`);
+                                }
+                            }
+                        ]
                     return(
                     <HomePropCard key={index} image='../images.jpeg'  property={[prop]} buttonList={buttonList} />
                     )

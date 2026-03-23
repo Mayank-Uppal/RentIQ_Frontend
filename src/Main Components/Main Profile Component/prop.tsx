@@ -19,23 +19,23 @@ export const OwnerProfileFields = [
             }, errorMsg: "City is required"
         },
         {
-            type: "number", name: "pincode", placeholder: "Pincode", validation: {
+            type: "number", name: "pincode", placeholder: "Pincode", label:"Pincode",validation: {
                 required: "Pincode is required",
                 Length:{value:6,message:"Pincode should be of 6 digits"}
             }, errorMsg: "Pincode is required"
         },
         {
-            type: "number", name: "age", placeholder: "Age", validation: {
+            type: "number", name: "age", placeholder: "Age",label:"Age", validation: {
                 required: "Age is required",
             }, errorMsg: "Age is required"
         },
         {
-            type: "text", name: "gender", placeholder: "Gender", validation: {
+            type: "text", name: "gender", placeholder: "Gender",label:"Gender", validation: {
                 required: "Gender is required",
             }, errorMsg: "Gender is required"
         },
         {
-            type: "text", name: "occupation", placeholder: "Occupation",validation:{
+            type: "text", name: "occupation", placeholder: "Occupation",label:"Occupation",validation:{
                 pattern: {
                     value: /^[A-Za-z\s]+$/,
                     message: "Name should contain only alphabets"
@@ -64,33 +64,33 @@ export const TenantProfileFields=[
             }, errorMsg: "Last Name is required"
         },
         {
-            type: "text", name: "address", placeholder: "Home Address", validation: {
+            type: "text", name: "address", placeholder: "Home Address", label:"Home Address", validation: {
                 required: "Address is required",
             }, errorMsg: "Address is required"
         },
         {
-            type: "text", name: "city", placeholder: "Home City", validation: {
+            type: "text", name: "city", placeholder: "Home City",label:"Home City", validation: {
                 required: "City is required",
             }, errorMsg: "City is required"
         },
         {
-            type: "number", name: "pincode", placeholder: "Pincode", validation: {
+            type: "number", name: "pincode", placeholder: "Pincode",label:"Pincode", validation: {
                 required: "Pincode is required",
                 Length:{value:6,message:"Pincode should be of 6 digits"}
             }, errorMsg: "Pincode is required"
         },
         {
-            type: "number", name: "age", placeholder: "Age", validation: {
+            type: "number", name: "age", placeholder: "Age",label:"Age", validation: {
                 required: "Age is required",
             }, errorMsg: "Age is required"
         },
         {
-            type: "text", name: "gender", placeholder: "Gender", validation: {
+            type: "text", name: "gender", placeholder: "Gender",label:"Gender", validation: {
                 required: "Gender is required",
             }, errorMsg: "Gender is required"
         },
         {
-            type: "text", name: "occupation", placeholder: "Occupation",validation:{
+            type: "text", name: "occupation", placeholder: "Occupation",label:"Occupation",validation:{
                 pattern: {
                     value: /^[A-Za-z\s]+$/,
                     message: "Name should contain only alphabets"

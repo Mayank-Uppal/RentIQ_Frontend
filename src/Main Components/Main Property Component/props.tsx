@@ -26,29 +26,29 @@ export const PropertyFields = [
             }, errorMsg: "Property Description is required"
         },
         {
-            type: "text", name: "address", placeholder: "Address", validation: {
+            type: "text", name: "address", placeholder: "Address",label: "Address", validation: {
                 required: "Address is required",
             }, errorMsg: "Address is required"
         },
         {
-            type: "text", name: "city", placeholder: "City", validation: {
+            type: "text", name: "city", placeholder: "City",label: "City", validation: {
                 required: "City is required",
             }, errorMsg: "City is required"
         },
         {
-            type: "number", name: "pincode", placeholder: "Pincode", validation: {
+            type: "number", name: "pincode", placeholder: "Pincode",label: "Pincode", validation: {
                 required: "Pincode is required",
                 Length:{value:6,message:"Pincode should be of 6 digits"}
             }, errorMsg: "Pincode is required"
         },
         {
-            type: "number", name: "rent", placeholder: "Property Rent", validation: {
+            type: "number", name: "rent", placeholder: "Property Rent",label: "Property Rent", validation: {
                 required: "Property Rent is required",
                 min:{value:5000,message:"Property Rent must be greater then 5,000"}
             }, errorMsg: "Property Rent is required"
         },
         {
-            type: "number", name: "electricityCost", placeholder: "Electricity Cost / Unit", validation: {
+            type: "number", name: "electricityCost", placeholder: "Electricity Cost / Unit",label: "Electricity Cost / Unit", validation: {
             }
         }
     ]

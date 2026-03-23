@@ -10,7 +10,8 @@ export const tenantInvite=async({token})=>{
         const response=jwt.verify(token,process.env.secretKey);
         const {tenant,propertyId}=response;
         const istenant=await userAuthModel.findOne({email:tenant,role:'Tenant'});
-        if(!istenant)return {message:"auth"};
+        if(!istenant)return {message:"signup"};
+        if(istenant)return {message:"login"};
         /* const istenantProfile=await tenantModel.findOne({_id:istenant._id});
         if(!istenantProfile)return {message:"profile"}; */
         /* await propertyModel.findOneAndUpdate({_id:propertyId},{$addToSet:{tenant:istenant._id}});*/

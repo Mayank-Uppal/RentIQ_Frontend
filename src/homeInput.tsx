@@ -42,7 +42,7 @@ function HomeInput({inputs,buttonList,onsubmit,role,legend,handlenavigate,texton
         <>
         <div className="dark bg-neutral-primary min-h-screen flex items-center justify-center py-8 px-4">
             <form className="dark bg-neutral-primary max-w-md mx-auto flex flex-col justify-center items-center" onSubmit={handleSubmit(onsubmit)} >
-                <fieldset className="dark h-auto px-12 py-12 fieldset bg-base-200 border-default rounded-box w-lg border p-4">
+                <fieldset className="dark bg-neutral-primary h-auto px-12 py-12 fieldset bg-base-200 border-default rounded-box w-lg border p-4">
                 <legend className="text-white fieldset-legend p-4 text-lg">{legend}</legend>
 
                 {inputs.map((inp,index)=>(

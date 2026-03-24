@@ -4,7 +4,7 @@ dotenv.config();
 const sendMail = async (email, token) => {
     try {
         console.log("helllo")
-        const invite = `http://localhost:5173/invite?token=${token}`;
+        const invite = `https://rentiq-frontend.onrender.com/invite?token=${token}`;
         const message = `<p>Dear Tenant,</p>
 
         <p>You have been invited to join a rental property on RentIQ.</p>

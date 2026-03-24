@@ -27,7 +27,7 @@ function App() {
         <Route path='/property/:propertyId/detail' element={<HomePropDetail />}/>
         <Route path='/tenant/tenantid' element={<HomeRentHistory />}/>
         <Route path='/tenant' element={<HomeMainTenant />}/>
-        <Route path='/invite' element={<HomeTenant />}/>
+        <Route path='/tenant-invite' element={<HomeTenant />}/>
       </Routes>
     </Router>
     </>

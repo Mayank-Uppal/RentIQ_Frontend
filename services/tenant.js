@@ -83,6 +83,7 @@ export const rentdata=async({tenantId},userId)=>{
         const tenant = await tenantModel.findOne({_id: tenantId});
         const start = new Date(tenant.joinedAt);
         const end = new Date();
+        const property=await propertyModel.findOne({ownerId:userId});
 
         while(start <= end) {
             const monthYear = start.toLocaleString('en-US', { month: 'short' }) + '-' + start.getFullYear();
@@ -90,11 +91,26 @@ export const rentdata=async({tenantId},userId)=>{
             
             if(!monthExists) {
                 await tenantModel.findByIdAndUpdate(tenantId, {
-                    $push: { rentDetails: { month: monthYear} }
+                    $push: { 
+                        rentDetails: { 
+                            month: monthYear,
+                            rent: property.rent,
+                            rentstatus: "Pending"
+                        } 
+                    }
                 });
             }
             start.setMonth(start.getMonth() + 1);
         }
+
+        const updatedTenant = await tenantModel.findById(tenantId);
+        const sorted = updatedTenant.rentDetails.sort((a, b) => {
+            return new Date(a.month) - new Date(b.month);
+        });
+        
+        await tenantModel.findByIdAndUpdate(tenantId, {
+            rentDetails: sorted
+        });
         return { message: "done" };
     } catch (error) {
         throw error;

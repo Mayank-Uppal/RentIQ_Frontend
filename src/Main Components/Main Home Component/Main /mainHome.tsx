@@ -5,6 +5,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import HomeProperties from '../../Main Property Component/homeProperties';
 
+console.log("Main Homemm.       ,............")
+
 function MainHome(){
     const navigate=useNavigate();
 

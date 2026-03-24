@@ -41,9 +41,7 @@ function HomePropDetail() {
             const month = date.toLocaleString('en-US', { month: 'short' });
             const year = date.getFullYear();
 
-            const currentRent = prop.rentDetails.find(
-                (d: any) => d.month === `${pmonth}-${pyear}`
-            );
+           
 
             return{
             ...prop,

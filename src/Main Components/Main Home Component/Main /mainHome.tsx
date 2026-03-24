@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import MainCopy from './mainCopy';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -9,6 +9,16 @@ console.log("Main Homemm.       ,............")
 
 function MainHome(){
     const navigate=useNavigate();
+    const location = useLocation(); 
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const token = searchParams.get('token');
+        if(token) {
+            navigate(`/tenant-invite?token=${token}`);
+        }
+    }, []);
+
 
     const istoken=localStorage.getItem("token");
     const buttonList=[{

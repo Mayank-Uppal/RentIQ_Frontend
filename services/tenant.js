@@ -7,9 +7,19 @@ const {ObjectId}=mongoose.Types;
 
 export const tenantInvite=async({token})=>{
     try {
+        console.log("1. Function called");
+        console.log("2. Token received:", token);
+        console.log("3. Secret key:", process.env.secretKey);
+
         const response=jwt.verify(token,process.env.secretKey);
+        console.log("4. JWT verified successfully:", response);
+
         const {tenant,propertyId}=response;
+        console.log("5. Extracted data - tenant:", tenant, "propertyId:", propertyId);
+
         const istenant=await userAuthModel.findOne({email:tenant,role:'Tenant'});
+        console.log("6. Database query result:", istenant);
+
         if(!istenant)return {message:"signup"};
         if(istenant)return {message:"login"};
         return {message:"success"}; 

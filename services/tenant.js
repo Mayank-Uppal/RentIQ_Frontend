@@ -93,7 +93,7 @@ export const rentdata=async({tenantId},userId)=>{
         const tenant = await tenantModel.findOne({_id: tenantId});
         const start = new Date(tenant.joinedAt);
         const end = new Date();
-        const property=await propertyModel.findOne({ownerId:userId});
+        const property=await propertyModel.findOne({ownerId:userId.ownerId});
 
         while(start <= end) {
             const monthYear = start.toLocaleString('en-US', { month: 'short' }) + '-' + start.getFullYear();

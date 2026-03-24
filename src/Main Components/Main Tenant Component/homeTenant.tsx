@@ -8,7 +8,9 @@ function HomeTenant(){
     const location=useLocation();
     const navigate=useNavigate();
 
-    const token = location.search.split('=')[1];
+    /* const token = location.search.split('=')[1]; */
+    const searchParams = new URLSearchParams(location.search);
+    const token = searchParams.get('token');
 
     console.log("Tenant token from Brevo", token);
     /* const token=location.search.split('=')[1] */

@@ -6,7 +6,8 @@ function HomeTenant(){
     const location=useLocation();
     const navigate=useNavigate();
     const token=location.search.split('=')[1]
-    console.log(token);
+
+    console.log("Tenant token from Brevo",token)
     const fetchTenant=async()=>{
         try {
             const response=await axios.get(`https://rentiq-project.onrender.com/Tenant/invite/${token}`);

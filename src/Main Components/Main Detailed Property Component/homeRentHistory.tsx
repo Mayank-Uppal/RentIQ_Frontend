@@ -5,7 +5,7 @@ import React from "react";
 const tableHeading=["Month","Rent","Rent Status"]
 
 function HomeRentHistory() {
-    const tenantDetail=useContext(dataContext);
+    const {tenantDetail}=useContext(dataContext);
     if(!tenantDetail)return null;
     return (
         <>
@@ -21,23 +21,19 @@ function HomeRentHistory() {
                         </tr>
                     </thead>
                     <tbody>
-                        {tenantDetail || [].map((data:any,index:number)=>(
+                        {(tenantDetail || []).map((data: any, index: number) => (
                             <React.Fragment key={index}>
-                                {data.rentDetails.map((rentDetails:any,index:number)=>(
-                                 <tr  key={index} className="bg-neutral-primary-soft border-b border-default ">
-                            <td className="text-center px-6 py-4">
-                                {rentDetails.month}
-                            </td>
-                            <td className="text-center px-6 py-4">
-                                {rentDetails.rent}
-                            </td>
-                            <td className={`${rentDetails.rentstatus==="Paid"?'text-green-600 text-center px-6 py-4':'text-red-500 text-center px-6 py-4'}`}>
-                                {rentDetails.rentstatus}
-                            </td>
+                                {data.rentDetails.map((rentDetail: any, index: number) => (
+                            <tr key={index} className="bg-neutral-primary-soft border-b border-default">
+                                <td className="text-center px-6 py-4">{rentDetail.month}</td>
+                                <td className="text-center px-6 py-4">{rentDetail.rent}</td>
+                                <td className={`text-center px-6 py-4 ${rentDetail.rentstatus === "Paid" ? 'text-green-600' : 'text-red-500'}`}>
+                                    {rentDetail.rentstatus}
+                                </td>
                             </tr>
-                            ))}
-                            </React.Fragment>
                         ))}
+                        </React.Fragment>
+                    ))}
                     </tbody>
                 </table>
             </div>

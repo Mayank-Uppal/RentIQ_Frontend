@@ -4,17 +4,16 @@ import {useEffect, useState } from "react";
 import {useLocation } from "react-router-dom";
 import { createContext } from "react";
 import HomeNavbar from "../Main Home Component/navbar/homeNavbar";
-export const dataContext=createContext(null);
 
 export const tableHeading=["Tenant","Age","Gender","Occupation","Rent Month","Joining Month","Monthly Rent","Total Amount Paid","Rent Status","Edit","History"]
 interface DataContextType {
     tenantDetail: any[];
     eachProperty: any[];
 }
+export const dataContext = createContext<DataContextType>(null!);
 
 
 function HomePropDetail() {
-    const dataContext = createContext<DataContextType | null>(null);
     const [rentstatus]=useState<string>("Pending");
     const [eachProperty, setEachProperty] = useState<any[]>([]);
     const [tenantDetail,setTenantDetails]=useState<any[]>([]);
@@ -41,6 +40,10 @@ function HomePropDetail() {
             const pyear = presentDate.getFullYear();
             const month = date.toLocaleString('en-US', { month: 'short' });
             const year = date.getFullYear();
+
+            const currentRent = prop.rentDetails.find(
+                (d: any) => d.month === `${pmonth}-${pyear}`
+            );
 
             return{
             ...prop,
@@ -77,7 +80,7 @@ function HomePropDetail() {
 
     return (
         <>
-        <dataContext.Provider value={{tenantDetail,eachProperty}}>
+        <dataContext.Provider value={{ tenantDetail, eachProperty }}>
             <div className="min-h-screen dark bg-neutral-primary flex flex-col gap-4 items-start px-8 y-10">
                 <HomeNavbar ishome={false}/>
                 <div className="w-full flex flex-col py-32">

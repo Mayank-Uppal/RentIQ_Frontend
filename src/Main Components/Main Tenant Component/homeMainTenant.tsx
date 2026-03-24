@@ -21,7 +21,7 @@ function HomeMainTenant() {
     const tenantToken = location.state?.tenantToken;
 
     console.log(location.state)
-
+    console.log("token from brevo",localStorage.getItem("token"));
     const fetchData = async () => {
         const response = await axios.get("https://rentiq-project.onrender.com/Tenant", { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
         console.log("response ", response.data)

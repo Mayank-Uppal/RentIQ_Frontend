@@ -7,6 +7,8 @@ import { rentdata } from "../services/tenant.js";
 
 export const inviteTenant=async(req,res)=>{
     try {
+        console.log("TOKEN:", req.params.token);
+        console.log("DOTS:", (req.params.token.match(/\./g) || []).length); 
         const response=await tenantInvite(req.params);
         return res.status(200).json(response);
     } catch (error) {

@@ -28,7 +28,7 @@ const sendMail = async (email, token) => {
             body: JSON.stringify({
                 sender: {
                     name: 'RentIQ',
-                    email: 'rentiqapp@gmail.com' 
+                    email: 'myank07official@gmail.com' 
                 },
                 to: [{ email: email }],
                 subject: "Invite to join Rental Property",
